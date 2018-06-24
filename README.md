@@ -1,14 +1,16 @@
 # Kntnt's auto excerpt generator
 
-WordPress mu-plugin that creates a better auto excerpt than builtin.
+WordPress plugin that creates a better auto excerpt than builtin.
 
 ## Description
 
-An automatic excerpt is generated if a manual is missing. This plugin generates a better auto excerpt than the builtin.
+An automatic excerpt is generated if non is given.
 
-If *[Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/)* (*ACF*) is installed and a field with the slug `lead` exists, then the content of that field is used.
+If *[Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/)* (*ACF*) is installed and a field with the slug `lead` exists, then the content of that field is used as excerpt.
 
 If ACF is not installed or there is no field with a slug `lead`, then the first complete paragraph of the body text is used.
+
+The plugin also provdies the excerpt as the meta value for the meta key `_genesis_description`. Some SEO plugins, e.g. [The SEO Framework](https://sv.wordpress.org/plugins/autodescription/) and [Yoast SEO](https://sv.wordpress.org/plugins/wordpress-seo/), uses this value as fallback if no meta description is given.
 
 ## Installation
 

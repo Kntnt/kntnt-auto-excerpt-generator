@@ -12,27 +12,44 @@
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-add_filter('wp_trim_excerpt', function ($text, $raw_excerpt) {
+namespace Kntnt\Auto_Excerpt_Generator;
+
+defined( 'WPINC' ) && new Plugin();
+
+final class Plugin {
 
   // If an ACF field with following slug exists, the field's value is used as
   // auto excerpt. Otherwise the first paragraph of the body text is used.
-  $acf_field_slug = 'lead';
+  private $acf_field_slug = 'lead';
 
-  if(!$raw_excerpt) {
-
-    if (function_exists('get_field') && ($lead=get_field($acf_field_slug))) {
-      $text = $lead;
-    }
-    else {
-      $text = get_the_content();
-      $text = strip_shortcodes($text);
-      $text = apply_filters('the_content', $text);
-      $text = substr($text, 0, strpos( $text, '</p>') + 4);
-    }
-
+  public function __construct() {
+    add_action( 'plugins_loaded', [ $this, 'run' ] );
   }
 
-  return $text;
+  public function run() {
+    add_filter( 'wp_trim_excerpt', [ $this, 'wp_trim_excerpt' ], 10, 2 );
+    add_filter( 'get_post_metadata', [ $this, 'get_post_metadata' ], 10, 4 );
+  }
+  
+  public function wp_trim_excerpt( $text, $raw_excerpt ) {
+    if( ! $raw_excerpt ) {
+      if ( function_exists( 'get_field' ) && ( $lead = get_field( $this->acf_field_slug ) ) ) {
+        $text = strip_tags( $lead );
+      }
+      else {
+        $text = get_the_content();
+        $text = strip_shortcodes( $text );
+        $text = apply_filters( 'the_content', $text );
+        $text = substr( $text, 0, strpos( $text, '</p>' ) + 4 );
+      }
+    }
+    return $text;
+  }
 
-}, 10, 2);
+  public function get_post_metadata( $meta_value, $object_id, $meta_key, $single ) {
+    if ( "_genesis_description" == $meta_key ) {
+      return get_the_excerpt( $object_id );
+    }
+  }
 
+}
