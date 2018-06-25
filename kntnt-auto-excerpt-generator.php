@@ -33,8 +33,8 @@ final class Plugin {
   
   public function wp_trim_excerpt( $text, $raw_excerpt ) {
     if( ! $raw_excerpt ) {
-      if ( function_exists( 'get_field' ) && ( $lead = get_field( $this->acf_field_slug ) ) ) {
-        $text = strip_tags( $lead );
+      if ( function_exists( '\get_field' ) && ( $lead = \get_field( $this->acf_field_slug ) ) ) {
+        $text = $lead;
       }
       else {
         $text = get_the_content();
@@ -46,10 +46,24 @@ final class Plugin {
     return $text;
   }
 
-  public function get_post_metadata( $meta_value, $object_id, $meta_key, $single ) {
-    if ( "_genesis_description" == $meta_key ) {
-      return get_the_excerpt( $object_id );
+  public function get_post_metadata( $meta_value, $post_id, $meta_key, $single ) {
+
+    static $enabled = true;
+
+    if ( $enabled && '_genesis_description' == $meta_key ) {
+
+      $enabled = false;
+      $meta_value = get_metadata( 'post', $post_id, $meta_key, $single );
+      $enabled = true;
+
+      if ( ! $meta_value ) {
+        $meta_value = trim( strip_tags( get_the_excerpt( $post_id ) ) );
+      }
+
     }
+    
+    return $meta_value;
+
   }
 
 }
