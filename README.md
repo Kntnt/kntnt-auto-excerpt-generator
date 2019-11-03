@@ -1,22 +1,52 @@
-# Kntnt's auto excerpt generator
+# Kntnt Auto Excerpt Generator
 
-WordPress plugin that creates a better auto excerpt than builtin.
+WordPress plugin that creates a better auto excerpt than builtin. 
 
 ## Description
 
-An automatic excerpt is generated if non is given.
-
-If *[Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/)* (*ACF*) is installed and a field with the slug `lead` exists, then the content of that field is used as excerpt.
-
-If ACF is not installed or there is no field with a slug `lead`, then the first complete paragraph of the body text is used.
-
-The plugin also provdies the excerpt as the meta value for the meta key `_genesis_description`. Some SEO plugins, e.g. [The SEO Framework](https://sv.wordpress.org/plugins/autodescription/) and [Yoast SEO](https://sv.wordpress.org/plugins/wordpress-seo/), uses this value as fallback if no meta description is given.
+TODO  
 
 ## Installation
 
-Install the plugin the [usually way](https://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
+Install the plugin [the usually way](https://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
+
+You can also install it with [*GitHub Updater*](https://github.com/afragen/github-updater/archive/develop.zip), which gives you the additional benefit of keeping the plugin up to date from within its administrative interface (i.e. the usually way). Please visit its [wiki](https://github.com/afragen/github-updater/wiki) for more information.
+
+You need an API key for this plugin to work. To get an API key free of charge, send a request to info@kntnt.com.
+
+## Frequently Asked Questions
+
+### Where is the setting page?
+
+Look for `Newsletter Feed` in the Settings menu.
+
+### How do I know if there is a new version?
+
+This plugin is currently [hosted on GitHub](https://github.com/kntnt/kntnt-auto-excerpt-generator); one way would be to ["watch" the repository](https://help.github.com/articles/watching-and-unwatching-repositories/).
+
+If you prefer WordPress to nag you about an update and let you update from within its administrative interface (i.e. the usually way) you must [download *GitHub Updater*](https://github.com/afragen/github-updater/archive/develop.zip) and install and activate it the usually way. Please visit its [wiki](https://github.com/afragen/github-updater/wiki) for more information. 
+
+### How can I get help?
+
+If you have a questions about the plugin, and cannot find an answer here, start by looking at [issues](https://github.com/kntnt/kntnt-auto-excerpt-generator/issues) and [pull requests](https://github.com/kntnt/kntnt-auto-excerpt-generator/pulls). If you still cannot find the answer, feel free to ask in the the plugin's [issue tracker](https://github.com/kntnt/kntnt-auto-excerpt-generator/issues) at Github.
+
+### How can I report a bug?
+
+If you have found a potential bug, please report it on the plugin's [issue tracker](https://github.com/kntnt/kntnt-auto-excerpt-generator/issues) at Github.
+
+### How can I contribute?
+
+Contributions to the code or documentation are much appreciated.
+
+If you are unfamiliar with Git, please date it as a new issue on the plugin's [issue tracker](https://github.com/kntnt/kntnt-auto-excerpt-generator/issues) at Github.
+
+If you are familiar with Git, please do a pull request.
 
 ## Changelog
+
+### 2.0.0
+
+Rewritten plugin.
 
 ### 1.0.2
 
@@ -29,3 +59,4 @@ Excerpts are now auto generated also outside the loop.
 ### 1.0.0
 
 Initial release.
+
