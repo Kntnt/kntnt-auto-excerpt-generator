@@ -18,6 +18,10 @@ Install the plugin the [usually way](https://codex.wordpress.org/Managing_Plugin
 
 ## Changelog
 
+### 1.0.2
+
+Moved auto generation of _genesis_description to new plugin.
+
 ### 1.0.1
 
 Excerpts are now auto generated also outside the loop.
