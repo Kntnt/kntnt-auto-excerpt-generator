@@ -15,6 +15,7 @@ class Plugin extends Abstract_Plugin {
 			'admin' => [
 				'init' => [
 					'Settings',
+                    'Generator',
 				],
 			],
 		];
